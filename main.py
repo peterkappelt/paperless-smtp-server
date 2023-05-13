@@ -1,7 +1,8 @@
 from email import policy, message_from_bytes
 from email.message import EmailMessage
-from aiosmtpd.controller import Controller
+from aiosmtpd.controller import UnthreadedController
 from aiosmtpd.smtp import log as mail_log
+import asyncio
 import requests
 import logging
 import env
@@ -58,17 +59,20 @@ def main():
     )
     mail_log.setLevel(logging.WARNING)
 
+    # asyncio setup
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+
     # start the SMTP server
     logging.info("Starting SMTP server")
-    controller = Controller(
-        MailHandler(), hostname=env.SMTP_BIND_HOST, port=env.SMTP_PORT
+    controller = UnthreadedController(
+        MailHandler(), hostname=env.SMTP_BIND_HOST, port=env.SMTP_PORT, loop=loop
     )
-    controller.start()
+    controller.begin()
     logging.info(
         f"SMTP listening on host '{controller.hostname}' port {controller.port}"
     )
-    input("Press any key to exit\n")
-    controller.stop()
+    loop.run_forever()
 
 
 if __name__ == "__main__":
