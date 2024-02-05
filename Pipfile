@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+aiosmtpd = "~=1.4.4"
+urllib3 = "~=2.2.0"
+requests = "~=2.31.0"
+
+[dev-packages]
+pre-commit = "~=3.6.0"
+
+[requires]
+python_version = "3.11"
