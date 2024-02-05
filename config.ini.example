@@ -1,0 +1,16 @@
+[server]
+# optional: Bind SMTP server to specific IP/ hostname
+# BindHost =
+# optional: specify SMTP server port (default 8025)
+# Port = 8025
+
+# this section configures handling of emails to "paperless1@example.con"
+[paperless1@example.com]
+# Root URL of your paperless instance. Include http(s)://
+PaperlessHost = https://paperless.example.com
+# Paperless API Token for the user to upload to. Must have sufficient permission to upload
+PaperlessToken = your-token-for-user-1
+
+[paperless2@example.com]
+PaperlessHost = https://paperless.example.com
+PaperlessToken = your-token-for-user-2
