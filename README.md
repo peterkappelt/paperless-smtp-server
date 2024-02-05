@@ -20,7 +20,7 @@ Glad you're asking! I own a Scanner that is able to scan to SMB, FTP or Email.
 * Have a local server (Raspberry Pi or anything else) that runs Docker and is reachable by your scanner
 
 ### Run the container
-`docker run -p 8025:8025 -e PAPERLESS_HOST=https://your-paperless.example.com .-e PAPERLESS_TOKEN=your-paperless-token ghcr.io/peterkappelt/paperless-smtp-server:main`
+`docker run -p 8025:8025 -e PAPERLESS_HOST=https://your-paperless.example.com -e PAPERLESS_TOKEN=your-paperless-token ghcr.io/peterkappelt/paperless-smtp-server:main`
 
 ### Setup your scanner
 * Configure the SMTP server
